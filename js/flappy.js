@@ -8,6 +8,7 @@ const distanciaD = urlParams.get('distancia');
 const velocidadeJ = urlParams.get('velocidade');
 const velocidadeP = urlParams.get('velocidadeP')
 const personagens = urlParams.get('personagens');
+const tipos = urlParams.get('tipo');
 
 
 function novoElemento(tagName, className) {
@@ -139,14 +140,30 @@ function Passaro(alturaJogo) {
 function colidiu(passaro, barreiras) {
     let colidiu = false
 
-    barreiras.pares.forEach(parDeBarreiras => {
-        if (!colidiu) {
-            const superior = parDeBarreiras.superior.elemento
-            const inferior = parDeBarreiras.inferior.elemento
-            colidiu = estaoSobrepostos(passaro.elemento, superior)
-                || estaoSobrepostos(passaro.elemento, inferior)
-        }
-    })
+    if(tipos === 'real'){
+        barreiras.pares.forEach(parDeBarreiras => {
+            if (!colidiu) {
+                const superior = parDeBarreiras.superior.elemento
+                const inferior = parDeBarreiras.inferior.elemento
+                colidiu = estaoSobrepostos(passaro.elemento, superior)
+                    || estaoSobrepostos(passaro.elemento, inferior)
+            }else{
+                const gameOver = document.querySelector('[gameOver]')
+                const escore = document.querySelector('[score]')
+                gameOver.style.display = 'flex'
+                escore.innerText = `${nome}`
+            }
+        })
+    }else{
+        barreiras.pares.forEach(parDeBarreiras => {
+            if (colidiu) {
+                const superior = parDeBarreiras.superior.elemento
+                const inferior = parDeBarreiras.inferior.elemento
+                colidiu = estaoSobrepostos(passaro.elemento, superior)
+                    || estaoSobrepostos(passaro.elemento, inferior)
+            }
+        })
+    }
     return colidiu
 
 }
