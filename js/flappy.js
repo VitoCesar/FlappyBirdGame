@@ -137,36 +137,6 @@ function Passaro(alturaJogo) {
     return horizontal && vertical
 }
 
-function colidiu(passaro, barreiras) {
-    let colidiu = false
-
-    if(tipos === 'real'){
-        barreiras.pares.forEach(parDeBarreiras => {
-            if (!colidiu) {
-                const superior = parDeBarreiras.superior.elemento
-                const inferior = parDeBarreiras.inferior.elemento
-                colidiu = estaoSobrepostos(passaro.elemento, superior)
-                    || estaoSobrepostos(passaro.elemento, inferior)
-            }else{
-                const gameOver = document.querySelector('[gameOver]')
-                const escore = document.querySelector('[score]')
-                gameOver.style.display = 'flex'
-                escore.innerText = `${nome}`
-            }
-        })
-    }else{
-        barreiras.pares.forEach(parDeBarreiras => {
-            if (colidiu) {
-                const superior = parDeBarreiras.superior.elemento
-                const inferior = parDeBarreiras.inferior.elemento
-                colidiu = estaoSobrepostos(passaro.elemento, superior)
-                    || estaoSobrepostos(passaro.elemento, inferior)
-            }
-        })
-    }
-    return colidiu
-
-}
 
  function FlappyBird() {
     let pontos = 0
@@ -184,6 +154,37 @@ function colidiu(passaro, barreiras) {
     const progresso = new Progresso()
     const barreiras = new Barreiras(altura, largura, abertura, espaco,
         () => progresso.atualizarPontos(++pontos))
+
+    function colidiu(passaro, barreiras) {
+        let colidiu = false
+    
+        if(tipos === 'real'){
+            barreiras.pares.forEach(parDeBarreiras => {
+                if (!colidiu) {
+                    const superior = parDeBarreiras.superior.elemento
+                    const inferior = parDeBarreiras.inferior.elemento
+                    colidiu = estaoSobrepostos(passaro.elemento, superior)
+                        || estaoSobrepostos(passaro.elemento, inferior)
+                }else{
+                    const gameOver = document.querySelector('[game-over]')
+                    const infos = document.querySelector('[infos]')
+                    gameOver.style.display = 'flex'
+                    infos.innerText = `${nome} e ganhou ${pontos} pontos`
+                }
+            })
+        }else{
+            barreiras.pares.forEach(parDeBarreiras => {
+                if (colidiu) {
+                    const superior = parDeBarreiras.superior.elemento
+                    const inferior = parDeBarreiras.inferior.elemento
+                    colidiu = estaoSobrepostos(passaro.elemento, superior)
+                        || estaoSobrepostos(passaro.elemento, inferior)
+                }
+            })
+        }
+        return colidiu
+    
+    }
 
     const passaro = new Passaro(altura)
 
