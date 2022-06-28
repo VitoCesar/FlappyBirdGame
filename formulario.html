@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario FP</title>
+  <link rel="stylesheet" href="./css/form.css">
+</head>
+<body>
+  <div class="form">
+    <h1>Flappy bird</h1>
+    <h2>Configurações</h2>
+
+    <div class="config">
+      <form action="./index.html" method="get" id="form">
+        <label for="nome">Nome do Jogador: </label>
+        <input type="text" name="nome" placeholder="" id="nome">
+
+        <label for="cenario">Cenário do jogo</label>
+        <select name="turnos" id="turnos">
+          <option id="noturno" value="noite">Noturno</option>
+          <option id="diurno" value="dia">Diurno</option>
+        </select>
+
+        <label for="intervalo">Intervalo entre canos</label>
+        <select name="intervalo" id="intervalo"> 
+          <option id="facil" value="250">Fácil</option>
+          <option id="medio" value="200">Médio</option>
+          <option id="dificil" value="150">Difícil</option>
+        </select>
+
+        <label for="distancia">Distância entre os canos</label>
+        <select name="distancia" id="distancia">
+          <option id="facil2" value="500">Facil</option>
+          <option id="medio2" value="400">Medio</option>
+          <option id="dificil2" value="300">Dificil</option>
+        </select>
+
+        <label for="velocidade">Velocidade do jogo</label>
+        <input type="number" id="velocidade" name="velocidade" value="2" min="0" max="20" step="2">
+
+        <label for="personagem">Personagem</label>
+        <div class="personagens">
+          <select name="personagens" id="">
+            <option>Gengar</option>
+            <option>Donatelo</option>
+            <option>Passaro</option>
+          </select>
+        </div>
+
+        <label for="tipo">Tipo de jogo</label>
+        <select name="tipo" id="tipo">
+          <option id="treino" value="treino">Treino</option>
+          <option id="real" value="real">Real</option>
+        </select>
+
+        <label for="velocidadeP">Velocidade do personagem</label>
+        <select name="velocidadeP" id="velocidadeP">
+          <option id="baixa" value="5">Baixa</option>
+          <option id="media" value="8">Media</option>
+          <option id="alta" value="10">Alta</option>
+        </select>
+
+        <label for="pontuacao">Pontuação</label>
+        <select name="pontuacao" id="pontuacao">
+          <option id="1" value="1">1</option>
+          <option id="10" value="10">10</option>
+          <option id="100" value="100">100</option>
+        </select>
+
+        <div class="confirmar">
+          <input id="confirmar" type="submit" value="Iniciar" onclick="init()">
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+  
+</body>
+</html>
