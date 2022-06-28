@@ -9,6 +9,7 @@ const velocidadeJ = urlParams.get('velocidade');
 const velocidadeP = urlParams.get('velocidadeP')
 const personagens = urlParams.get('personagens');
 const tipos = urlParams.get('tipo');
+const pontuacao = urlParams.get('pontuacao')
 
 
 function novoElemento(tagName, className) {
@@ -153,7 +154,7 @@ function Passaro(alturaJogo) {
 
     const progresso = new Progresso()
     const barreiras = new Barreiras(altura, largura, abertura, espaco,
-        () => progresso.atualizarPontos(++pontos))
+        () => progresso.atualizarPontos(pontos += parseInt(pontuacao)))
 
     function colidiu(passaro, barreiras) {
         let colidiu = false
@@ -170,6 +171,8 @@ function Passaro(alturaJogo) {
                     const infos = document.querySelector('[infos]')
                     gameOver.style.display = 'flex'
                     infos.innerText = `${nome} e ganhou ${pontos} pontos`
+                    let somorte = document.querySelector('[som]')
+                    somorte.play()
                 }
             })
         }else{
