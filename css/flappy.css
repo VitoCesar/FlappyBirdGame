@@ -35,7 +35,7 @@ body {
     height: 700px;
     width: 1200px;
     margin: 15px;
-    background-color: deepskyblue;
+    background-color: rgba(0, 191, 255, 0.767);
     overflow: hidden;
 }
 
@@ -69,10 +69,6 @@ body {
     font-size: 30px;
 }
 
-[coin] img{
-    width: 7%;
-}
-
 .passaro {
     position: absolute;
     width: 60px;
@@ -99,6 +95,7 @@ body {
     width: 130px;
     background: linear-gradient(90deg, #639301, #A5E82E);
     border: 3px solid rgb(146, 233, 6);
+    box-shadow: 0 0 20px rgb(146, 233, 6);
 }
 
 .barreira .corpo {
@@ -107,6 +104,7 @@ body {
     background: linear-gradient(90deg, #639301, #A5E82E);
     border-left: 3px solid rgb(146, 233, 6);
     border-right: 3px solid rgb(146, 233, 6);
+    box-shadow: 0 0 20px rgb(146, 233, 6);
 }
 
 .progresso {

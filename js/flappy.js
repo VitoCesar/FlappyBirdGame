@@ -65,7 +65,7 @@ function Barreiras(altura, largura, abertura, espaco, notificarPonto) {
         new ParDeBarreiras(altura, abertura, largura + espaco * 3)
     ]
 
-    const deslocamento = velocidadeJ
+    const deslocamento = 3 
     this.animar = () => {
         this.pares.forEach(par => {
             par.setX(par.getX() - deslocamento)
@@ -143,9 +143,9 @@ function Passaro(alturaJogo) {
     let pontos = 0
     const areaDoJogo = document.querySelector('[wm-flappy]')
     if(cenario === 'dia'){
-        areaDoJogo.style.backgroundColor = 'deepskyblue';
+        areaDoJogo.style.backgroundColor = 'rgba(0, 191, 255, 0.767)';
     }else{
-        areaDoJogo.style.backgroundColor = 'rgb(5, 7, 78)';
+        areaDoJogo.style.backgroundColor = 'rgb(7, 9, 66)';
     }
     const altura = areaDoJogo.clientHeight
     const largura = areaDoJogo.clientWidth
@@ -203,7 +203,7 @@ function Passaro(alturaJogo) {
               if(colidiu(passaro,barreiras)){
                  clearInterval(temporizador) 
              } 
-        }, 20)
+        }, velocidadeJ)
     }
 }
  new FlappyBird().start() 
